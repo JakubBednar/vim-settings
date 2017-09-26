@@ -7,7 +7,7 @@ set smartindent
 set autoindent
 set nocompatible
 set number
-set nobackup	" do not keep a backup file, use versions instead
+"set nobackup	" do not keep a backup file, use versions instead
 set history=50	" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set cursorline  " underline the cursor line
@@ -68,6 +68,10 @@ augroup vimrcEx
 	autocmd FileType cpp,c nnoremap <buffer> <leader>c I//<esc>
 augroup END
 
+augroup filetype
+	au! BufRead,BufNewFile *.proto setfiletype proto
+augroup end
+
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 command Diff vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
@@ -82,15 +86,20 @@ noremap <right> <nop>
 noremap <up> <nop>
 noremap <down> <nop>
 
+let &backupdir = $HOME.'/Library/Application Support/Vim/backup//'
+if isdirectory(&backupdir) == 0
+	:silent !mkdir -p &backupdir >/dev/null 2>&1
+endif
 set backup
-if &backupdir =~# '^\.,'
-	let &backupdir = '/Users/bednarj/Library/Application Support/Vim/backup,' . &backupdir
+
+let &directory = $HOME.'/Library/Application Support/Vim/swap//'
+if isdirectory(&directory) == 0
+	:silent !mkdir -p &directory >/dev/null 2>&1
 endif
 set swapfile
-if &directory =~# '^\.,'
-	let &directory = '/Users/bednarj/Library/Application Support/Vim/swap,' . &directory
+
+let &undodir =  $HOME.'/Library/Application Support/Vim/undo//'
+if isdirectory(&undodir) == 0
+	:silent !mkdir -p &undodir >/dev/null 2>&1
 endif
 set undofile
-if &undodir =~# '^\.,'
-	let &undodir = '/Users/bednarj/Library/Application Support/Vim/undo,' . &undodir
-endif
