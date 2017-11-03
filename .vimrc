@@ -63,7 +63,7 @@ augroup vimrcEx
 				\ endif
 
 	" Fix indentation of a file upon open or write
-	autocmd BufRead,BufWritePre *.c,*.cc,*.cpp,*.h,*.hpp normal gg=G
+	" autocmd BufRead,BufWritePre *.c,*.cc,*.cpp,*.h,*.hpp normal gg=G
 	" c-style commenting command made buffer-specific
 	autocmd FileType cpp,c nnoremap <buffer> <leader>c I//<esc>
 augroup END
@@ -86,20 +86,20 @@ noremap <right> <nop>
 noremap <up> <nop>
 noremap <down> <nop>
 
-let &backupdir = $HOME.'/Library/Application Support/Vim/backup//'
+let &backupdir = $HOME.'/Vim/backup//'
 if isdirectory(&backupdir) == 0
-	:silent !mkdir -p &backupdir >/dev/null 2>&1
+	:silent execute '!mkdir -p ' . &backupdir
 endif
 set backup
 
-let &directory = $HOME.'/Library/Application Support/Vim/swap//'
+let &directory = $HOME.'/Vim/swap//'
 if isdirectory(&directory) == 0
-	:silent !mkdir -p &directory >/dev/null 2>&1
+	:silent execute '!mkdir -p ' . &directory
 endif
 set swapfile
 
-let &undodir =  $HOME.'/Library/Application Support/Vim/undo//'
+let &undodir =  $HOME.'/Vim/undo//'
 if isdirectory(&undodir) == 0
-	:silent !mkdir -p &undodir >/dev/null 2>&1
+	:silent execute '!mkdir -p ' . &undodir
 endif
 set undofile
