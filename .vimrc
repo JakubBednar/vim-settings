@@ -50,6 +50,9 @@ set statusline=%F\ %m%r%y\ char:0x%B\ line:%l/%L/%p%%
 set novisualbell
 set scrolloff=5 " see 5 lines above and below when scrolling
 
+" C++ 11 indentation help
+setlocal cindent cino=j1,(0,ws,Ws,t0
+
 " Put these in an autocmd group, so that we can delete them easily.
 augroup vimrcEx
 	au!
