@@ -27,7 +27,9 @@ set shiftround
 set softtabstop=4
 set tabstop=4
 set shiftwidth=4
-"set expandtab
+set expandtab
+set list
+set listchars=tab:>-
 
 " show select menu for :cmd and tab
 set wildmenu
@@ -51,7 +53,7 @@ set novisualbell
 set scrolloff=5 " see 5 lines above and below when scrolling
 
 " C++ 11 indentation help
-setlocal cindent cino=j1,(0,ws,Ws,t0
+setlocal cindent cino=j1,(0,ws,Ws,t0,N-s,g0
 
 " Put these in an autocmd group, so that we can delete them easily.
 augroup vimrcEx
